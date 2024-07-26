@@ -1,0 +1,62 @@
+// change the theme
+@use "sass:map";
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+$theme-colors: (
+  
+  "primary": #2f009f,
+  "secondary": #784ce0,
+  "info": #2d57d9,
+  "warning": #d37937,
+  "danger": #a5393d,
+  "success": #156c57,
+  "light": #f9f8fb,
+  "dark": #0f0b18,
+  
+);
+
+.bg-navbar {
+  background-color: map.get($theme-colors, "light");
+  font-family: "Open Sans", sans-serif;
+  color:  map.get($theme-colors, "primary");
+  padding: 0.5em;
+  box-shadow: 0 0 30px 5px map.get($theme-colors, "primary");
+  width: 100vw;
+  .brand{
+    font-family: "Lobster", sans-serif;
+    font-size: x-large;
+    font-weight: 400;
+    font-style: normal;
+    color:  map.get($theme-colors, "primary");
+  
+  }
+   .nav-link{
+    color:  map.get($theme-colors, "primary");
+  }
+  .nav-link:hover{
+    color:  map.get($theme-colors, "dark");
+  }
+  .navbar-toggler{
+    border: none
+  } 
+  .navbar-toggler:focus {
+    text-decoration: none;
+    outline: 0;
+    box-shadow: 0 0 0 3px map.get($theme-colors, "primary");
+}
+.logo{
+  width: 5em;
+  height: 5em;
+}
+
+}
+
+.content{
+  margin-top: 150px;
+  height: 100vh;
+  width: 100vw;
+}
+
+// Import Bootstrap and its default variables
+@import '~bootstrap/scss/bootstrap.scss';
