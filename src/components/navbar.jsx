@@ -3,7 +3,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { ReactComponent as EditSVG }  from '../assets/trace.svg';
-import { ReactComponent as logoSVG }  from '../assets/trace.svg';
+// import { ReactComponent as logoSVG }  from '../assets/trace.svg';
 function BasicExample() {
   return (
     <Navbar expand="lg" bg="navbar" variant="light"  fixed="top">

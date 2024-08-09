@@ -4,7 +4,7 @@ import App from './App';
 import {
     createBrowserRouter,
     RouterProvider,
-    redirect
+    // redirect
 } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 //import Login, { authLoader as loginAuthLoader } from './pages/Login'

@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 import Layout from "../css/Layout.module.css"
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -13,7 +13,7 @@ import Pause from '../assets/pause menu.png'
 import Firstlevel from '../assets/firstlevel.png';
 import Mancalapic from '../assets/mancala.png';
 import Mancalagameover from '../assets/gameover.png';
-import Pantrypage from '../assets/what you have.png';
+// import Pantrypage from '../assets/what you have.png';
 export default function Projects() {
   //let navigate = useNavigate();
   let ballotbotinfo = {
@@ -49,7 +49,7 @@ export default function Projects() {
         <Col className={Layout.center}> 
           <div className="project-title">
             <h1> BallotBot 5000</h1>
-            <img src ={Projectooutputs} class={Layout.imageM}></img>
+            <img src ={Projectooutputs} alt = "text display of the project"class={Layout.imageM}></img>
           </div>
         </Col>
         <Col className={Layout.center}>
@@ -61,7 +61,7 @@ export default function Projects() {
       </Row>
       <Row>
        <Col className={Layout.center}>
-        <img src ={Ballotbotchart} class={Layout.imageL}></img>
+        <img src ={Ballotbotchart} alt ="Uml diagram of project"class={Layout.imageL}></img>
        </Col>
      
       </Row>
@@ -81,14 +81,14 @@ export default function Projects() {
         <h1>
           Let Me Cook
         </h1>
-        <img src ={Foodpage} class={Layout.imageML}></img>
+        <img src ={Foodpage} alt ="main page of projet" class={Layout.imageML}></img>
       </Col>
       <Col>
       <div className='slideshow'>
           < Projectdescription info = {letmecookinfo}> </Projectdescription>
           
       </div>
-      <img src ={RecipeEdit} class={Layout.imageM}></img>
+      <img src ={RecipeEdit} alt = "shows how to edit recipe"class={Layout.imageM}></img>
       </Col>
     </Row>
     <Row></Row>
@@ -117,13 +117,13 @@ export default function Projects() {
         <h1>
           Pigeon Game
         </h1>
-        <img src ={Firstlevel} class={Layout.imageMML}></img>
+        <img src ={Firstlevel} alt ="first level of game"class={Layout.imageMML}></img>
       </Col>
       
     </Row>
     <Row>
-      <Col> <img src ={Pause} class={Layout.imageMML}></img> </Col>
-      <Col> <img src ={Gamplay} class={Layout.imageMML}></img> </Col>
+      <Col> <img src ={Pause} alt = "game level paused"class={Layout.imageMML}></img> </Col>
+      <Col> <img src ={Gamplay} alt = "gameplay" class={Layout.imageMML}></img> </Col>
     </Row>
     <Row></Row>
     </div>
@@ -146,7 +146,7 @@ export default function Projects() {
         <h1>
           Mancala game
         </h1>
-        <img src ={Mancalagameover} class={Layout.imageM}></img>
+        <img src ={Mancalagameover} alt= "Game over" class={Layout.imageM}></img>
       </Col>
       <Col>
       <div className='slideshow'>
@@ -157,7 +157,7 @@ export default function Projects() {
       </Col>
     </Row>
     <Row>
-      <Col> <img src ={Mancalapic } class={Layout.imageMML}></img> </Col>
+      <Col> <img src ={Mancalapic } alt = "mancala game" class={Layout.imageMML}></img> </Col>
     </Row>
     <Row></Row>
     </div>
