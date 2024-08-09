@@ -51,11 +51,46 @@ $theme-colors: (
 }
 
 }
+h1{
+  font-family: "Open Sans", sans-serif;
+  font-size: larger;
+  font-weight: bold;
+}
+h2{
+  font-family: "Open Sans", sans-serif;
+  font-size: large;
+  font-weight: bold;
+}
 
 .content{
   margin-top: 150px;
   height: 100vh;
   width: 100vw;
+}
+
+.carContainer{
+  background-color: rgba( map.get($theme-colors, "primary"),0.2);
+  color: "white";
+  box-shadow: 0 0 10px 0px map.get($theme-colors, "primary");
+  border-radius: 3px;
+  min-height: 26em;
+}
+.slideshow{
+  margin: 2em;
+  
+}
+.project{
+  display: flex;
+  flex-wrap: wrap;
+
+}
+.project-title{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width:30em;
+  height:30em;
+ 
 }
 
 // Import Bootstrap and its default variables

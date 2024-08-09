@@ -3,3 +3,34 @@
     justify-content: center;
     align-items: center;
 }
+.contentbox{
+    display: flex;
+    margin: 1em;
+    padding: 1em;
+}
+.vertical{
+    display: flex;
+    flex-direction: column;
+}
+.imageL{
+    border-radius: 3px;
+    width: auto;
+    height:100vh;
+}
+.imageML{
+    border-radius: 3px;
+    width: auto;
+    height:40em;
+}
+
+.imageM{
+    border-radius: 3px;
+    width: auto;
+   
+    height: 13.5em;
+}
+.imageMML{
+    border-radius: 3px;
+    width: auto;
+    height: 22em;
+}
