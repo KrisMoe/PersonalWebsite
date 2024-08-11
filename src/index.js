@@ -1,69 +1,46 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import './index.css';
 import App from './App';
+import reportWebVitals from './reportWebVitals';
 import {
-    createBrowserRouter,
-    RouterProvider,
-    // redirect
+  createBrowserRouter,
+  RouterProvider,
 } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
-//import Login, { authLoader as loginAuthLoader } from './pages/Login'
-
-import AboutMe from './pages/AboutMe';
-import Education from './pages/Education';
-import Projects from './pages/Projcets';
 import ErrorPage from './pages/ErrorPage';
-
-// async function authLoader() {
-//     const res = await fetch("/.auth/me")
-//     const resJ = await res.json()
-//     const client = resJ.clientPrincipal
-//     if (client) {
-//         return client
-//     }
-//     return redirect('/login')
-// }
-
-// async function loginRedirectLoader() {
-//     // check user first time login
-//     const res = await fetch('/api/login', { method: "GET" })
-//     console.log("Logging in: ", res)
-//     return redirect('/')
-// }
-
+import Projects from './pages/Projects';
+import Education from './pages/Education';
+import AboutMe from './pages/AboutMe';
 const router = createBrowserRouter([
-{
-    path: "/",
-    element: <App/>,
-    errorElement: <ErrorPage/>,
-    children: [
+  {
+      path: "/",
+      element: <App/>,
+      errorElement: <ErrorPage/>,
+      children: [
         {
-            index: true,
-            element: <AboutMe/>,
-            //loader: authLoader,
-            errorElement: <ErrorPage/>
-        }, {
-            path: "AboutMe",
-            element: <AboutMe/>,
-            //loader: authLoader,
-            errorElement: <ErrorPage/>
-         }, 
-         {
-            path: "Projects",
-            element: <Projects/>,
-            //loader: authLoader,
-            errorElement: <ErrorPage/>
-        }, {
-            path: "Education",
-            element: <Education/>,
-            //loader: authLoader,
-            errorElement: <ErrorPage/>
-        }]
-}])
+          path: "/",
+          element: <AboutMe/>
+        },
+        {
+          path: "/projects",
+          element: <Projects/>,
+        },
+        {
+          path: "/education",
+          element: <Education/>,
+        },
+      
+          ]
+  }])
+  
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+  root.render(
+  <React.StrictMode>
+      <RouterProvider router={router} />
+  </React.StrictMode>
+  );
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-<React.StrictMode>
-    <RouterProvider router={router} />
-</React.StrictMode>
-);
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
