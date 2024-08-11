@@ -7,10 +7,11 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import ErrorPage from './pages/ErrorPage';
-import Projects from './pages/Projcets';
-import Education from './pages/Education';
-import AboutMe from './pages/AboutMe';
+import ErrorPage from './pages/errorpage'
+import Results from './pages/results'
+import Random from './pages/random'
+import Survey from './pages/survey';
+import SplashPage from './pages/splashpage';
 const router = createBrowserRouter([
   {
       path: "/",
@@ -19,17 +20,20 @@ const router = createBrowserRouter([
       children: [
         {
           path: "/",
-          element: <AboutMe/>
+          element: <SplashPage/>
         },
         {
-          path: "/projects",
-          element: <Projects/>,
+          path: "/results/:id",
+          element: <Results/>,
         },
         {
-          path: "/education",
-          element: <Education/>,
+          path: "/random",
+          element: <Random/>,
         },
-      
+        {
+          path: "/survey",
+          element: <Survey/>,
+        },
           ]
   }])
   
