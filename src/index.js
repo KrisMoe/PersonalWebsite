@@ -12,6 +12,7 @@ import Results from './pages/results'
 import Random from './pages/random'
 import Survey from './pages/survey';
 import SplashPage from './pages/splashpage';
+import AboutMe from './pages/AboutMe';
 const router = createBrowserRouter([
   {
       path: "/",
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
         {
           path: "/survey",
           element: <Survey/>,
+        },
+        {
+          path: "/aboutme",
+          element: <AboutMe/>,
         },
           ]
   }])

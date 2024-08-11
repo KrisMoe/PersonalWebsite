@@ -10,7 +10,7 @@ function NavBar() {
         <Link  to="/survey"  className={styles.navLink}>Survey</Link>
         {/* <Link  to="/results"  className={styles.navLink}>Results</Link> */}
         <Link  to="/random"  className={styles.navLink}>Random</Link>
-        
+        <Link  to="/aboutme"  className={styles.navLink}>About Me</Link>
        
        
     </div>
