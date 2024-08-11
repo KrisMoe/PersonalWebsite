@@ -49,7 +49,7 @@ export default function Projects() {
         <Col className={Layout.center}> 
           <div className="project-title">
             <h1> BallotBot 5000</h1>
-            <img src ={Projectooutputs} alt = "text display of the project"class={Layout.imageM}></img>
+            <img src ={Projectooutputs} alt = "text display of the project"className={Layout.imageM}></img>
           </div>
         </Col>
         <Col className={Layout.center}>
@@ -61,7 +61,7 @@ export default function Projects() {
       </Row>
       <Row>
        <Col className={Layout.center}>
-        <img src ={Ballotbotchart} alt ="Uml diagram of project"class={Layout.imageL}></img>
+        <img src ={Ballotbotchart} alt ="Uml diagram of project"className={Layout.imageL}></img>
        </Col>
      
       </Row>
@@ -81,14 +81,14 @@ export default function Projects() {
         <h1>
           Let Me Cook
         </h1>
-        <img src ={Foodpage} alt ="main page of projet" class={Layout.imageML}></img>
+        <img src ={Foodpage} alt ="main page of projet" className={Layout.imageML}></img>
       </Col>
       <Col>
       <div className='slideshow'>
           < Projectdescription info = {letmecookinfo}> </Projectdescription>
           
       </div>
-      <img src ={RecipeEdit} alt = "shows how to edit recipe"class={Layout.imageM}></img>
+      <img src ={RecipeEdit} alt = "shows how to edit recipe"className={Layout.imageM}></img>
       </Col>
     </Row>
     <Row></Row>
@@ -117,13 +117,13 @@ export default function Projects() {
         <h1>
           Pigeon Game
         </h1>
-        <img src ={Firstlevel} alt ="first level of game"class={Layout.imageMML}></img>
+        <img src ={Firstlevel} alt ="first level of game"className={Layout.imageMML}></img>
       </Col>
       
     </Row>
     <Row>
-      <Col> <img src ={Pause} alt = "game level paused"class={Layout.imageMML}></img> </Col>
-      <Col> <img src ={Gamplay} alt = "gameplay" class={Layout.imageMML}></img> </Col>
+      <Col> <img src ={Pause} alt = "game level paused"className={Layout.imageMML}></img> </Col>
+      <Col> <img src ={Gamplay} alt = "gameplay" className={Layout.imageMML}></img> </Col>
     </Row>
     <Row></Row>
     </div>
@@ -146,7 +146,7 @@ export default function Projects() {
         <h1>
           Mancala game
         </h1>
-        <img src ={Mancalagameover} alt= "Game over" class={Layout.imageM}></img>
+        <img src ={Mancalagameover} alt= "Game over" className={Layout.imageM}></img>
       </Col>
       <Col>
       <div className='slideshow'>
@@ -157,7 +157,7 @@ export default function Projects() {
       </Col>
     </Row>
     <Row>
-      <Col> <img src ={Mancalapic } alt = "mancala game" class={Layout.imageMML}></img> </Col>
+      <Col> <img src ={Mancalapic } alt = "mancala game" className={Layout.imageMML}></img> </Col>
     </Row>
     <Row></Row>
     </div>
