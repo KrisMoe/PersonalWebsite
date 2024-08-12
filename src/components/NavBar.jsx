@@ -15,14 +15,14 @@ function BasicExample() {
           <Nav className="me-auto">
             <Nav.Link href="/">About Me</Nav.Link>
             <Nav.Link href="/education">Education</Nav.Link>
-            <NavDropdown title="Projects" id="basic-nav-dropdown" >
-              <NavDropdown.Item href="/Projects#Ballotbot">BallotBot 5000</NavDropdown.Item>
-              <NavDropdown.Item href="/Projects#Let Me Cook">
+            <NavDropdown title="projects" id="basic-nav-dropdown" >
+              <NavDropdown.Item href="/projects#Ballotbot">BallotBot 5000</NavDropdown.Item>
+              <NavDropdown.Item href="/projects#Let Me Cook">
                 Let Me Cook
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="/Projects#Godot">Godot</NavDropdown.Item>
-              <NavDropdown.Item href="/Projects#Unity">
+              <NavDropdown.Item href="/projects#Godot">Godot</NavDropdown.Item>
+              <NavDropdown.Item href="/projects#Unity">
                 Unity
               </NavDropdown.Item>
             </NavDropdown>
