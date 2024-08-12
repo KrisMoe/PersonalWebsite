@@ -50,6 +50,6 @@ input[type="range"] {
 .submitButton:hover::after{
     background-image: linear-gradient(0deg, #666666, #d3d3d3);
 }
-p{
+/* p{
     color: #ffffff;
-}
+} */
