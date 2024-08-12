@@ -13,6 +13,7 @@ import Random from './pages/random'
 import Survey from './pages/survey';
 import SplashPage from './pages/splashpage';
 import AboutMe from './pages/AboutMe';
+import Education from './pages/Education'
 const router = createBrowserRouter([
   {
       path: "/",
