@@ -15,6 +15,7 @@ import SplashPage from './pages/splashpage';
 import AboutMe from './pages/AboutMe';
 import Education from './pages/Education'
 import Projects from './pages/Projcets';
+import Pigeon from './pages/Pigeon'
 const router = createBrowserRouter([
   {
       path: "/",
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
         {
           path: "/projects",
           element: <Projects/>,
+        },
+        {
+          path: "/pigeon",
+          element: <Pigeon/>,
         },
           ]
   }])
