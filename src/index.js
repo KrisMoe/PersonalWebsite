@@ -8,14 +8,14 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import ErrorPage from './pages/errorpage'
-import Results from './pages/results'
-import Random from './pages/random'
-import Survey from './pages/survey';
-import SplashPage from './pages/splashpage';
+
+
 import AboutMe from './pages/AboutMe';
 import Education from './pages/Education'
 import Projects from './pages/Projcets';
-import Pigeon from './pages/Pigeon'
+import Pigeon from './pages/Pigeon';
+import Amomals from './pages/Almomals'
+import Merchents from './pages/Merchents'
 const router = createBrowserRouter([
   {
       path: "/",
@@ -26,18 +26,7 @@ const router = createBrowserRouter([
           path: "/",
           element: <AboutMe/>
         },
-        {
-          path: "/results/:id",
-          element: <Results/>,
-        },
-        {
-          path: "/random",
-          element: <Random/>,
-        },
-        {
-          path: "/survey",
-          element: <Survey/>,
-        },
+
         {
           path: "/aboutme",
           element: <AboutMe/>,
@@ -53,6 +42,14 @@ const router = createBrowserRouter([
         {
           path: "/pigeon",
           element: <Pigeon/>,
+        },
+        {
+          path: "/amomals",
+          element: <Amomals/>,
+        },
+        {
+          path: "/merch",
+          element: <Merchents/>,
         },
           ]
   }])

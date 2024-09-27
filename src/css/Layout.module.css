@@ -12,6 +12,10 @@
     display: flex;
     flex-direction: column;
 }
+.horizontal{
+    display: flex;
+    flex-direction: row;
+}
 .imageL{
     border-radius: 3px;
     width: auto;

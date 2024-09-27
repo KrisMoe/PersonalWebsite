@@ -1,22 +1,42 @@
 import React from 'react';
 import Sketch from 'react-p5';
 
-function P5Sketch({seed}) {
+function P5Sketch({seed, width, height,  parent}) {
+  
+    let canvaswidth = window.innerWidth*0.8; 
+    let canvasheight = window.innerHeight*0.8; 
 
-
-
-    const canvaswidth =  window.innerWidth*0.8; 
-    const canvasheight =  window.innerHeight*0.8; 
-
-    const setup = (p5, canvasParentRef) => {
-        p5.createCanvas(canvaswidth, canvasheight).parent(canvasParentRef);
-        p5.background(255,255,255);
+    if (width){
+        canvaswidth = width
     }
+    if (height){
+        canvasheight = height
+    }
+   
+    const setup = (p5, canvasParentRef) => {
+        //console.log( "in side " +canvaswidth,canvasheight)
+        if(parent){
+            if(parent.current){
+                p5.createCanvas(canvaswidth, canvasheight).parent(parent.current);
+            }
+            else{
+                p5.createCanvas(canvaswidth, canvasheight).parent(canvasParentRef);
+            }
+        }
+        p5.background(255,255,255);
+        
+    }
+    //console.log( "out side " +canvaswidth,canvasheight)
+    
+
 
     const draw = (p5) => {
+        //console.log( "update " +canvaswidth,canvasheight)
+        p5.resizeCanvas(canvaswidth,canvasheight)
         if(seed){
             p5.randomSeed(seed);
         }
+        //p5.print(seed)
         
         p5.frameRate(1);
 
@@ -34,7 +54,9 @@ function P5Sketch({seed}) {
             for (let i = 0; i < distrabution.length; i++) {
                 
                 if(distrabution[i][1]<prevx||distrabution[i][1]>max){
-                    p5.text("wrong order",400, 100);
+                    p5.text(prevx,400, 70);
+                    p5.text(distrabution[i][1],400, 100);
+                    p5.text(max,400, 130);
                     return  0
                 }
                 prevx = distrabution[i][1]
@@ -114,7 +136,7 @@ function P5Sketch({seed}) {
                 tailpoints.push(temp)
                 x = x+distance*p5.cos(angle)
                 y = y+distance*p5.sin(angle)
-                p5.print(anglevarent);
+                //p5.print(anglevarent);
                
                 newdistance = newdistance + createrandomnumfromdist(p5.random(),distancedist,-distance/2,distance/2)
             }
@@ -124,14 +146,14 @@ function P5Sketch({seed}) {
 
 
         let avecanvassize = p5.sqrt(canvaswidth*canvasheight);
-        let maxsizfits = (p5.min( avecanvassize,canvaswidth, canvasheight))/4
-        let sizedis = [[0.05,maxsizfits*7/16],[0.9,maxsizfits*9/16]]
+        let maxsizfits = p5.min( avecanvassize,canvaswidth, canvasheight)/2
+        let sizedis = [[0.05,maxsizfits*1/8],[0.9,maxsizfits*1/4]]
             
        
         p5.background(255,255,255);
         let randomnum = p5.random();
         // Main Size Settings 
-        let maintorsosize = createrandomnumfromdist( randomnum,sizedis, maxsizfits/4, maxsizfits);
+        let maintorsosize = createrandomnumfromdist( randomnum,sizedis, maxsizfits/16, maxsizfits/2);
         let mainx = canvaswidth/2
         let mainy = canvasheight/2
        
@@ -139,9 +161,9 @@ function P5Sketch({seed}) {
         let hipsizedis = [[0.5,maintorsosize*1/16],[0.1,maintorsosize*7/8]]
         let hipsize =  createrandomnumfromdist( randomnum,hipsizedis, 0,maintorsosize*5/4);
         let hipsddis =  [[0.5,p5.PI]]
-        let hipdistdis = [[0.5,maintorsosize*7/16],[0.9,maintorsosize*8/16]]
+        let hipdistdis = [[0.5,p5.min(maxsizfits-hipsize-2,maintorsosize*7/16)],[0.9,p5.min(maxsizfits-hipsize-1,maintorsosize*9/16)]]
         let hipsd = createrandomnumfromdist( randomnum,hipsddis, 0,2*p5.PI);
-        let hipsdist =  createrandomnumfromdist( randomnum, hipdistdis,maintorsosize*1/16,maintorsosize);
+        let hipsdist =  createrandomnumfromdist( randomnum, hipdistdis,maintorsosize*1/16,maxsizfits-hipsize);
         let hipsx = mainx + hipsdist*p5.cos(hipsd);
         let hipsy = mainy + hipsdist*p5.sin(hipsd)
   
@@ -167,19 +189,19 @@ function P5Sketch({seed}) {
      
         let blegd = 1/2*p5.PI;
         let blegsize = maintorsosize*15/16
-        let blegdist = 100
+        let blegdist = p5.random(maintorsosize,maintorsosize*2)
         let blegx = hipsx+blegdist*p5.cos(blegd)
         let blegy = hipsy+blegdist*p5.sin(blegd)
-        let backlegpoints = solvelineandcircle(blegx,blegy,blegsize/2,blegd,10);
-        let torsobacklegspoints = solvelineandcircle(hipsx,hipsy,hipsize/2,blegd,15);
+        let backlegpoints = solvelineandcircle(blegx,blegy,blegsize/2,blegd,maintorsosize*1/8);
+        let torsobacklegspoints = solvelineandcircle(hipsx,hipsy,hipsize/2,blegd,maintorsosize*1/8);
         //front legs
         let flegd = 1/2*p5.PI;
         let flegsize = maintorsosize*15/16
-        let flegdist = 100
+        let flegdist =  blegdist
         let flegx = mainx+flegdist*p5.cos(flegd)
         let flegy = mainy+flegdist*p5.sin(flegd)
-        let frontlegpoints = solvelineandcircle(flegx,flegy,flegsize/2,flegd,10);
-        let torsofrontlegspoints = solvelineandcircle(mainx,mainy,maintorsosize/2,flegd,15);
+        let frontlegpoints = solvelineandcircle(flegx,flegy,flegsize/2,flegd,maintorsosize*1/8);
+        let torsofrontlegspoints = solvelineandcircle(mainx,mainy,maintorsosize/2,flegd,maintorsosize*1/8);
         // face
       
       
@@ -187,9 +209,9 @@ function P5Sketch({seed}) {
         let eyeangle =  createrandomnumfromdist( randomnum,eyeangledist, p5.PI*5/32, p5.PI/4);
         let eyedistancedist = [[0.5,headsize*6/32]]
         let eyedistance =createrandomnumfromdist( randomnum,eyedistancedist,  headsize/32, headsize*7/32);
-       
+        let eyesize = p5.random(headsize*1/16,headsize*1/8)
 
-        let earsize = p5.random(20,headsize*1/2)
+        let earsize = p5.random(headsize*1/4,headsize*1/2)
 
        
         function createNone(){}
@@ -289,7 +311,6 @@ function P5Sketch({seed}) {
             let snoutwidth = p5.random(20,headsize*1/2)
             let snoutheight = p5.random(snoutwidth-20,headsize*1/2)
            
-            p5.print(snoutwidth);
             p5.ellipse(headx-(headsize/4)*p5.cos(p5.PI*3/2), heady-(headsize/4)*p5.sin(p5.PI*3/2), snoutwidth,snoutheight);
             let spacing = p5.random(snoutwidth*10/64,snoutwidth*20/64)
             p5.fill([colorDistrabution[0][0],colorDistrabution[0][1],colorDistrabution[0][2]])
@@ -372,19 +393,19 @@ function P5Sketch({seed}) {
             
             p5.strokeWeight(0);
             // Back Legs
-            fillcurvin(20,10,backlegpoints[1][0],backlegpoints[1][1],torsobacklegspoints[1][0],torsobacklegspoints[1][1],15,hipsize/4,
+            fillcurvin(20,10,backlegpoints[1][0],backlegpoints[1][1],torsobacklegspoints[1][0],torsobacklegspoints[1][1],maintorsosize*1/4,hipsize/4,
                 [colorDistrabution[2][0],colorDistrabution[2][1],colorDistrabution[2][2]],
                 [colorDistrabution[1][0],colorDistrabution[1][1],colorDistrabution[1][2]]);
-            fillcurvin(20,10,backlegpoints[0][0],backlegpoints[0][1],torsobacklegspoints[0][0],torsobacklegspoints[0][1],15,hipsize/4,
+            fillcurvin(20,10,backlegpoints[0][0],backlegpoints[0][1],torsobacklegspoints[0][0],torsobacklegspoints[0][1],maintorsosize*1/4,hipsize/4,
                 [colorDistrabution[2][0],colorDistrabution[2][1],colorDistrabution[2][2]],
                 [colorDistrabution[1][0],colorDistrabution[1][1],colorDistrabution[1][2]]);
            
             // front legs
 
-            fillcurvin(20,10,frontlegpoints[1][0],frontlegpoints[1][1],torsofrontlegspoints[1][0],torsofrontlegspoints[1][1],15,hipsize/4,
+            fillcurvin(20,10,frontlegpoints[1][0],frontlegpoints[1][1],torsofrontlegspoints[1][0],torsofrontlegspoints[1][1],maintorsosize*1/4,hipsize/4,
                 [colorDistrabution[3][0],colorDistrabution[3][1],colorDistrabution[3][2]],
                 [colorDistrabution[2][0],colorDistrabution[2][1],colorDistrabution[2][2]]);
-                fillcurvin(20,10,frontlegpoints[0][0],frontlegpoints[0][1],torsofrontlegspoints[0][0],torsofrontlegspoints[0][1],15,hipsize/4,
+                fillcurvin(20,10,frontlegpoints[0][0],frontlegpoints[0][1],torsofrontlegspoints[0][0],torsofrontlegspoints[0][1],maintorsosize*1/4,hipsize/4,
                 [colorDistrabution[3][0],colorDistrabution[3][1],colorDistrabution[3][2]],
                 [colorDistrabution[2][0],colorDistrabution[2][1],colorDistrabution[2][2]]);
         }
@@ -393,13 +414,13 @@ function P5Sketch({seed}) {
             // Back Legs
             fillcurvin(40,10,frontlegpoints[1][0],frontlegpoints[1][1],
                 (torsobacklegspoints[1][0]*2+torsofrontlegspoints[1][0])/3,
-                (torsobacklegspoints[1][1]*2+torsofrontlegspoints[1][1])/3,15,hipsize/4,
+                (torsobacklegspoints[1][1]*2+torsofrontlegspoints[1][1])/3,maintorsosize*1/4,hipsize/4,
                 [colorDistrabution[2][0],colorDistrabution[2][1],colorDistrabution[2][2]],
                 [colorDistrabution[1][0],colorDistrabution[1][1],colorDistrabution[1][2]]);
             fillcurvin(40,10,frontlegpoints[0][0],frontlegpoints[0][1],
                 (torsobacklegspoints[0][0]*2+torsofrontlegspoints[0][0])/3,
                 (torsobacklegspoints[0][1]*2+torsofrontlegspoints[0][1])/3,
-                15,hipsize/4,
+                maintorsosize*1/4,hipsize/4,
                 [colorDistrabution[2][0],colorDistrabution[2][1],colorDistrabution[2][2]],
                 [colorDistrabution[1][0],colorDistrabution[1][1],colorDistrabution[1][2]]);
            
@@ -475,8 +496,8 @@ function P5Sketch({seed}) {
         }
        function createEyes(){
             p5.fill([colorDistrabution[0][0],colorDistrabution[0][1],colorDistrabution[0][2]])
-            p5.ellipse(headx-eyedistance*p5.cos(p5.PI/2+eyeangle), heady-eyedistance*p5.sin(p5.PI/2+eyeangle),10);
-            p5.ellipse(headx-eyedistance*p5.cos(p5.PI/2-eyeangle), heady-eyedistance*p5.sin(p5.PI/2-eyeangle),10);
+            p5.ellipse(headx-eyedistance*p5.cos(p5.PI/2+eyeangle), heady-eyedistance*p5.sin(p5.PI/2+eyeangle),eyesize);
+            p5.ellipse(headx-eyedistance*p5.cos(p5.PI/2-eyeangle), heady-eyedistance*p5.sin(p5.PI/2-eyeangle),eyesize);
        }
 
 
